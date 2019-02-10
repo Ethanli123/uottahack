@@ -25,7 +25,7 @@ class Explore extends Component {
     
     render() {
         return (
-            <Table className="exploreTable" dataSource={this.props.challenges} columns={this.challengeColumn} pagination={false} />
+            <Table dataSource={this.props.challenges} columns={this.challengeColumn} pagination={false} />
         );
     }
 }

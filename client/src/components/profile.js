@@ -8,36 +8,6 @@ const { Meta } = Card;
 class Profile extends Component {
     constructor(props) {
         super();
-        this.state = {
-            disabled: true,
-        };
-
-        this.scoreboardColumn = [
-            {
-                title: 'City Name',
-                dataIndex: 'cityName',
-                key: 'cityName'
-            }, {
-                title: 'Points Earned',
-                dataIndex: 'cityPoints',
-                key: 'cityPoints'
-            }
-        ];
-        this.challengeColumn = [
-            {
-                title: 'City',
-                dataIndex: 'city',
-                key: 'city'
-            }, {
-                title: 'Location',
-                dataIndex: 'location',
-                key: 'location'
-            }, {
-                title: 'Challenge',
-                dataIndex: 'challengeName',
-                key: 'challengeName'
-            }
-        ];
     }
     
     render() {
@@ -56,11 +26,11 @@ class Profile extends Component {
                 </Card>
             
                 <Card className="profileCard" title="City Scoreboard">
-                    <Table dataSource={this.props.user.points} columns={this.scoreboardColumn} pagination={false}/> 
+                    <Table dataSource={this.props.user.points} columns={this.props.user.scoreboardColumn} pagination={false}/> 
                 </Card>
 
                 <Card className="profileCard" title="Challenges Submitted">
-                    <Table dataSource={this.props.user.challenges} columns={this.challengeColumn} pagination={false} />
+                    <Table dataSource={this.props.user.challenges} columns={this.props.user.challengeColumn} pagination={false} />
                 </Card>
             </div>
         );
