@@ -1,11 +1,16 @@
 import React, { Component } from 'react';
 import { Card, Col, Row, Icon, Avatar, Switch, Table, Pagination } from 'antd';
 import '../style/profile.css';
+import profile from '../images/santatrump.jpg';
 
 const { Meta } = Card;
 
 const user = {
-    username: "E10 Li",
+    username: "Tronald Dump",
+    about: `Hi, my name is Tronald Dump, I am the long lost brother of our 
+            glorious leader Donald Trump. In my spare time I love grabbing 
+            th0ts right in the pu$$y, and engaging in physical activities that
+            help increase the size of my already massive, firm, throbbing hands.`,
     points: [
         {
             cityName: "Ottawa",
@@ -97,11 +102,14 @@ class Profile extends Component {
     
     render() {
         let msg = this.state.disabled ? "allow others to see your location" : "turn off location visibility";
-        
+        // anon default avatar: <Meta avatar={<Avatar size={128} icon="user" />} />
+
         return (
             <div>
                 <Card className="profileCard" title={user.username}>
-                    <Meta avatar={<Avatar size={128} icon="user" />} />
+                    <Meta avatar={<Avatar size={128} src={profile} />} 
+                          title="About Me"
+                          description={user.about} />
                     <br />
                     <Switch defaultChecked onChange={this.toggle} style={{"background-color": "#E7717D"}} />
                     <span className="disableMsg">{msg}</span>
