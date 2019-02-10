@@ -8,9 +8,8 @@ const { Meta } = Card;
 const user = {
     username: "Tronald Dump",
     about: `Hi, my name is Tronald Dump, I am the long lost brother of our 
-            glorious leader Donald Trump. In my spare time I love grabbing 
-            th0ts right in the pu$$y, and engaging in physical activities that
-            help increase the size of my already massive, firm, throbbing hands.`,
+            glorious leader Donald Trump. In my spare time I love building sand 
+            walls at the beach and admiring my H U M O N G O U S hands.`,
     points: [
         {
             cityName: "Ottawa",
