@@ -6,6 +6,7 @@ import Footer from './components/footer';
 import Profile from './components/profile';
 import Explore from './components/explore';
 import AddChallenge from './components/addChallenge';
+import dal from './api/index';
 import './style/App.css';
 
 class App extends Component {
@@ -13,6 +14,7 @@ class App extends Component {
         super(props);
 
         this.state = {
+            id: "user000000",
             disabled: false,
             username: "Tronald Dump",
             about: `Hi, my name is Tronald Dump, I am the long lost brother of our 
@@ -51,45 +53,59 @@ class App extends Component {
             points: [
                 {
                     cityName: "Ottawa",
-                    cityPoints: 30
-                },
-                {
+                    cityPoints: 20
+                }, {
                     cityName: "Toronto",
                     cityPoints: 90
-                },
-                {
-                    cityName: "Fuckyou County",
-                    cityPoints: 69
+                }, {
+                    cityName: "Waterloo",
+                    cityPoints: 10
                 }
             ],
-            challenges: [
-                {
-                    city: "Amsterdam",
-                    location: "NONE OF UR BIZNESS BIATCH",
-                    challengeName: "Do a barrel roll!",
-                    difficulty: 1
-                },
-                {
-                    city: "Victoria",
-                    location: "4304 Faithwood Road",
-                    challengeName: "Catch my cat Nao Nao",
-                    difficulty: 5
-                },
-                {
-                    city: "Waterloo",
-                    location: "MC, University of Waterloo",
-                    challengeName: "Beat Tiger in a game of chess",
-                    difficulty: -1
-                }
-            ]
+            challenges: [],
+            completed: []
         };
     }
 
-    addChallenge = (values) => {
-        let { city, location, challengeName } = values;
+    initData = () => {
+        dal.getChallenges().then((res) => {
+            let data = res.data;
+            let arr = [];
 
-        this.setState({
-            challenges: [...this.state.challenges, { city, location, challengeName }]
+            Object.entries(data).forEach(entry => {
+                let row = entry[1];
+                let challenge = {
+                    location: row.location,
+                    challengeName: row.activity,
+                    city: row.city,
+                    difficulty: row.difficulty,
+                    key: entry[0]
+                }
+                arr.push(challenge);
+            });
+            this.setState({ challenges: arr })
+        })
+        .catch((err) => {
+            console.log(err);
+        });
+    } // initData
+
+    addChallenge = (values) => {
+        let { city, location, challengeName, difficulty } = values;
+
+        let challenge = {
+            activity: challengeName,
+            city: city,
+            difficulty: difficulty,
+            location: location,
+            votes: 0
+        };
+
+        dal.createChallenge(challenge).then((res) => {
+            this.initData();
+        })
+        .catch((err) => {
+            console.log(`ERROR: ${err}`);
         });
     }
 
@@ -99,6 +115,9 @@ class App extends Component {
         });
     }
 
+    componentWillMount() {
+        this.initData();
+    }
     
     render() {
         return (

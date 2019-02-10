@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, Col, Row, Icon, Avatar, Switch, Table, Pagination } from 'antd';
+import { Card, Avatar, Switch, Table } from 'antd';
 import '../style/profile.css';
 import profile from '../images/santatrump.jpg';
 
@@ -29,7 +29,7 @@ class Profile extends Component {
                     <Table dataSource={this.props.user.points} columns={this.props.user.scoreboardColumn} pagination={false}/> 
                 </Card>
 
-                <Card className="profileCard" title="Challenges Submitted">
+                <Card className="profileCard" title="Challenges">
                     <Table dataSource={this.props.user.challenges} columns={this.props.user.challengeColumn} pagination={false} />
                 </Card>
             </div>
