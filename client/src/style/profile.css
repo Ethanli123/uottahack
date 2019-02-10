@@ -1,0 +1,17 @@
+@import '~antd/dist/antd.css';
+
+.profileCard {
+    margin: auto;
+    min-height: 200px;   
+    width: 600px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    box-shadow: 5px 5px #C2CAD0;
+}
+
+.disableMsg {
+    margin-left: 10px;
+    display: inline-block;
+    font-size: 18px;
+}
+
