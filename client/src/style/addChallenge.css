@@ -1,0 +1,9 @@
+@import '~antd/dist/antd.css';
+
+.form {
+    padding-top: 75px;
+    width: 500px;
+    height: 100%;
+    top: 25px;
+    margin: auto;
+}

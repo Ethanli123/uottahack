@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
-import { Layout, Menu, Avatar } from 'antd';
+import { Menu } from 'antd';
 import '../style/App.css';
 
 function NavBar(props) {
