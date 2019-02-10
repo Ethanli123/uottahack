@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
-import '../style/App.css';
+import { Card, Col, Row, Icon, Avatar, Switch, Table, Pagination } from 'antd';
+import '../style/profile.css';
+
+const { Meta } = Card;
 
 const user = {
     username: "E10 Li",
@@ -16,34 +19,113 @@ const user = {
             cityName: "Fuckyou County",
             cityPoints: 69
         }
+    ],
+    challenges: [
+        {
+            city: "Amsterdam",
+            location: "NONE OF UR BIZNESS BIATCH",
+            challengeName: "Do a barrel roll!"
+        },
+        {
+            city: "Victoria",
+            location: "4304 Faithwood Road",
+            challengeName: "Catch my cat Nao Nao"
+        },
+        {
+            city: "Waterloo",
+            location: "MC, University of Waterloo",
+            challengeName: "Beat Tiger in a game of chess"
+        },
+        {
+            city: "Amsterdam",
+            location: "NONE OF UR BIZNESS BIATCH",
+            challengeName: "Do a barrel roll!"
+        },
+        {
+            city: "Victoria",
+            location: "4304 Faithwood Road",
+            challengeName: "Catch my cat Nao Nao"
+        },
+        {
+            city: "Waterloo",
+            location: "MC, University of Waterloo",
+            challengeName: "Beat Tiger in a game of chess"
+        }
     ]
 };
 
 class Profile extends Component {
-    renderCityPoints = () => {
-        let list = [];
+    constructor(props) {
+        super();
+        this.state = {
+            disabled: true,
+        };
 
-        user.points.forEach((tuple, i) => {
-            list.push(
-                <li key={i}>{tuple.cityName}: {tuple.cityPoints}</li>
-            );
+        this.scoreboardColumn = [
+            {
+                title: 'City Name',
+                dataIndex: 'cityName',
+                key: 'cityName'
+            }, {
+                title: 'Points Earned',
+                dataIndex: 'cityPoints',
+                key: 'cityPoints'
+            }
+        ];
+        this.challengeColumn = [
+            {
+                title: 'City',
+                dataIndex: 'city',
+                key: 'city'
+            }, {
+                title: 'Location',
+                dataIndex: 'location',
+                key: 'location'
+            }, {
+                title: 'Challenge',
+                dataIndex: 'challengeName',
+                key: 'challengeName'
+            }
+        ];
+    }
+    
+    toggle = () => {
+        this.setState({
+          disabled: !this.state.disabled,
         });
-
-        return (
-            <ul>{list}</ul>
-        );
     }
     
     render() {
+        let msg = this.state.disabled ? "allow others to see your location" : "turn off location visibility";
+        
         return (
             <div>
-                <ul>
-                    <li>Name: {user.username}</li>
-                    <li>Points: {this.renderCityPoints()}</li>
-                </ul>
+                <Card className="profileCard" title={user.username}>
+                    <Meta avatar={<Avatar size={128} icon="user" />} />
+                    <br />
+                    <Switch defaultChecked onChange={this.toggle} style={{"background-color": "#E7717D"}} />
+                    <span className="disableMsg">{msg}</span>
+                </Card>
+            
+                <Card className="profileCard" title="City Scoreboard">
+                    <Table dataSource={user.points} columns={this.scoreboardColumn} pagination={false}/> 
+                </Card>
+
+                <Card className="profileCard" title="Challenges Submitted">
+                    <Table dataSource={user.challenges} columns={this.challengeColumn} pagination={false} />
+                </Card>
             </div>
         );
     };
 }
+
+/*
+<Card className='profileCard'>
+                <Meta
+                avatar={<Avatar size={128} icon="user" />}
+                title="About Me"
+                description="This is the description"/>
+            </Card>
+*/
 
 export default Profile;
