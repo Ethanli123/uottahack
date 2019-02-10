@@ -10,6 +10,10 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.16.4",
+<<<<<<< HEAD
+=======
+    "firebase": "^5.8.0",
+>>>>>>> 0a1470613a66587669c497b1db35a488e8773b70
     "firebase-admin": "^7.0.0",
     "firebase-functions": "^2.2.0"
   }

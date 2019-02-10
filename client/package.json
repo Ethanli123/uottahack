@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "antd": "^3.13.2",
+    "axios": "^0.18.0",
     "google-map-react": "^1.1.2",
     "google-maps-react": "^2.0.2",
     "react": "^16.8.1",
@@ -27,5 +28,6 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "proxy": "http://localhost:3001"
 }

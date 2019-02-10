@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Card, Col, Row, Icon, Avatar, Switch, Table, Pagination } from 'antd';
 import '../style/App.css';
+import { Card, Avatar, Switch, Table } from 'antd';
 import '../style/profile.css';
 import profile from '../images/santatrump.jpg';
 
@@ -9,36 +10,6 @@ const { Meta } = Card;
 class Profile extends Component {
     constructor(props) {
         super();
-        this.state = {
-            disabled: true,
-        };
-
-        this.scoreboardColumn = [
-            {
-                title: 'City Name',
-                dataIndex: 'cityName',
-                key: 'cityName'
-            }, {
-                title: 'Points Earned',
-                dataIndex: 'cityPoints',
-                key: 'cityPoints'
-            }
-        ];
-        this.challengeColumn = [
-            {
-                title: 'City',
-                dataIndex: 'city',
-                key: 'city'
-            }, {
-                title: 'Location',
-                dataIndex: 'location',
-                key: 'location'
-            }, {
-                title: 'Challenge',
-                dataIndex: 'challengeName',
-                key: 'challengeName'
-            }
-        ];
     }
 
     render() {
@@ -57,7 +28,6 @@ class Profile extends Component {
                     <Switch defaultChecked onChange={this.props.toggle} style={{"background-color": "#E7717D"}} />
                     <span className="disableMsg">{msg}</span>
                 </Card>
-
                 <div className="prof-title"> Points Earned </div>
                 <hr className="prof-hr" />
                 <Card className="profileCard">
@@ -68,6 +38,12 @@ class Profile extends Component {
                 <hr className="prof-hr" />
                 <Card className="profileCard">
                     <Table dataSource={this.props.user.challenges} columns={this.challengeColumn} pagination={false} />
+                <Card className="profileCard" title="City Scoreboard">
+                    <Table dataSource={this.props.user.points} columns={this.props.user.scoreboardColumn} pagination={false}/>
+                </Card>
+
+                <Card className="profileCard" title="Challenges">
+                    <Table dataSource={this.props.user.challenges} columns={this.props.user.challengeColumn} pagination={false} />
                 </Card>
             </div>
         );
