@@ -29,3 +29,24 @@
   text-decoration: none;
   color: white;
 }
+
+.map-container {
+  position: absolute;
+  margin-top: 150px;
+  margin-left: 150px;
+  width: 75vw;
+  height: 60vh;
+}
+
+.map-parent {
+  height: 100%;
+  width: 100%;
+  display: inline-block;
+}
+
+.map {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
