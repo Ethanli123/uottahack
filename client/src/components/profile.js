@@ -119,13 +119,4 @@ class Profile extends Component {
     };
 }
 
-/*
-<Card className='profileCard'>
-                <Meta
-                avatar={<Avatar size={128} icon="user" />}
-                title="About Me"
-                description="This is the description"/>
-            </Card>
-*/
-
 export default Profile;
