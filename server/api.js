@@ -52,9 +52,17 @@ api.get('/challenges', (req, res) => {
 });
 
 
-api.post('/challenges', async (req, res) => {
-    const { activity, difficulty, location, votes } = req.query;
-    var ref = db.ref('challenges');
-
-    ref.push({ activity, difficulty, location, votes });
+api.post('/challenges', (req, res) => {
+    const { activity, difficulty, location, votes, city, challengeId } = req.query;
+    var ref = db.ref(`challenges/challenge${challengeId}`);
+    var loc = JSON.parse(location);
+    ref.set({ 
+        activity: activity, 
+        difficulty: difficulty, 
+        location: loc,
+        votes: votes, 
+        city: city,
+        challengeId: challengeId,
+    });
+    res.json();
 });

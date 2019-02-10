@@ -25,7 +25,8 @@ function createChallenge(challenge) {
             city: challenge.city,
             difficulty: challenge.difficulty,
             location: challenge.location,
-            votes: 0
+            votes: 0,
+            challengeId: challenge.index
         }
     });
 } // createChallenge

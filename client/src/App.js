@@ -38,8 +38,8 @@ class App extends Component {
                     key: 'city'
                 }, {
                     title: 'Location',
-                    dataIndex: 'location',
-                    key: 'location'
+                    dataIndex: 'coordinates',
+                    key: 'coordinates'
                 }, {
                     title: 'Challenge',
                     dataIndex: 'challengeName',
@@ -74,12 +74,15 @@ class App extends Component {
 
             Object.entries(data).forEach(entry => {
                 let row = entry[1];
+                let locString = row.location.first + ", " + row.location.second;
                 let challenge = {
                     location: row.location,
+                    coordinates: locString,
+                    first: row.location.first,
+                    second: row.location.second,
                     challengeName: row.activity,
                     city: row.city,
-                    difficulty: row.difficulty,
-                    key: entry[0]
+                    difficulty: row.difficulty
                 }
                 arr.push(challenge);
             });
@@ -91,14 +94,19 @@ class App extends Component {
     } // initData
 
     addChallenge = (values) => {
-        let { city, location, challengeName, difficulty } = values;
+        let { city, challengeName, difficulty, x, y } = values;
+        let location = {};
+        location['first'] = x;
+        location['second'] = y;
+        let index = Math.floor((Math.random() * 999999) + 4);
 
         let challenge = {
             activity: challengeName,
             city: city,
             difficulty: difficulty,
             location: location,
-            votes: 0
+            votes: 0,
+            index: index
         };
 
         dal.createChallenge(challenge).then((res) => {

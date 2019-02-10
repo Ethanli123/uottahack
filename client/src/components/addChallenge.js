@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import '../style/addChallenge.css';
-import { Form, Select, Input, Button } from 'antd';
-  
-const { Option } = Select;
+import { Form, Input, Button } from 'antd';
 
 class AddChallengeForm extends Component {
     handleSubmit = (e) => {
+        console.log("HANDLESUBMIT");
         e.preventDefault();
         this.props.form.validateFields((err, values) => {
             if (!err) {
@@ -34,24 +33,48 @@ class AddChallengeForm extends Component {
                 </Form.Item>
 
                 <Form.Item
-                    label="Location"
-                    labelCol={{ span: 5 }}
-                    wrapperCol={{ span: 12 }}
-                >
-                    {getFieldDecorator('location', {
-                        rules: [{ required: true, message: 'Please input your location!' }],
-                    })(
-                        <Input />
-                    )}
-                </Form.Item>
-
-                <Form.Item
                     label="Description"
                     labelCol={{ span: 5 }}
                     wrapperCol={{ span: 12 }}
                 >
                     {getFieldDecorator('challengeName', {
                         rules: [{ required: true, message: 'Please input your challenge description!' }],
+                    })(
+                        <Input />
+                    )}
+                </Form.Item>
+
+                <Form.Item
+                    label="Difficulty"
+                    labelCol={{ span: 5 }}
+                    wrapperCol={{ span: 12 }}
+                >
+                    {getFieldDecorator('difficulty', {
+                        rules: [{ required: true, message: 'Please input your challenge difficulty!' }],
+                    })(
+                        <Input />
+                    )}
+                </Form.Item>
+
+                <Form.Item
+                    label="X coord"
+                    labelCol={{ span: 5 }}
+                    wrapperCol={{ span: 12 }}
+                >
+                    {getFieldDecorator('x', {
+                        rules: [{ required: true, message: 'Please input your x coordinate!' }],
+                    })(
+                        <Input />
+                    )}
+                </Form.Item>
+
+                <Form.Item
+                    label="Y coord"
+                    labelCol={{ span: 5 }}
+                    wrapperCol={{ span: 12 }}
+                >
+                    {getFieldDecorator('y', {
+                        rules: [{ required: true, message: 'Please input your y coordinate!' }],
                     })(
                         <Input />
                     )}
