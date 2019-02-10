@@ -3,7 +3,7 @@ import '../style/App.css';
 
 function Header(props) {
     return (
-        <div className="header">Company Name</div>
+        <div className="header">Adventeur</div>
     );  
 }
 

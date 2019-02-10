@@ -5,6 +5,7 @@ import Footer from './components/footer';
 import Header from './components/header'
 import Profile from './components/profile';
 import Explore from './components/explore';
+import AddChallenge from './components/addChallenge';
 import './style/App.css';
 
 class App extends Component {
@@ -14,8 +15,9 @@ class App extends Component {
         <Header />
         <NavBar />
         <Switch>
-          <Route exact path='/profile' component={Profile} />
           <Route exact path='/' component={Explore} />
+          <Route exact path='/profile' component={Profile} />
+          <Route exact path='/add-challenges' component={AddChallenge} />
         </Switch>
         <Footer />
       </div>

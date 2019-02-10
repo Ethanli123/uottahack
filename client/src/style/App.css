@@ -16,11 +16,11 @@
   font-size: 36px;
   text-align: center;
 }
-
+/* background-color: var(--color1);*/
 .nav {
   position: relative;
   width: 100%;
-  background-color: var(--color1);
+  
   font-size: 36px;
   text-align: center;
 }
