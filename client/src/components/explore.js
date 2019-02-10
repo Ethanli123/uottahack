@@ -2,26 +2,6 @@ import React, { Component } from 'react';
 import { GoogleApiWrapper, InfoWindow, Marker } from 'google-maps-react';
 import CurrentLocation from './map';
 
-const challenges = [{
-    location: {lat: 45.427963, lng: -75.686682},
-    activity: "Be a Boss!",
-    difficulty: 2,
-    votes: 100,
-  },
-  {
-    location: {lat: 45.430162, lng: -75.685577},
-    activity: "Be a Boss2!",
-    difficulty: 3,
-    votes: 100,
-  },
-  {
-    location: {lat: 45.428979, lng: -75.683226},
-    activity: "Be a Boss3!",
-    difficulty: 4,
-    votes: 100,
-  },
-];
-
 export class MapContainer extends Component {
   state = {
     showingInfoWindow: false,
@@ -46,7 +26,7 @@ export class MapContainer extends Component {
   };
 
   renderMapMarkers = (props, that) => {
-    return challenges.map(function(challenge, i) {
+    return that.props.challenges.map(function(challenge, i) {
       return (
         <Marker
           onClick={that.onMarkerClick}
@@ -62,7 +42,7 @@ export class MapContainer extends Component {
 
   renderInfoWindows = (props, that) => {
     console.log(that.state.selectedPlace.challenge);
-    return challenges.map(function(challenge, i) {
+    return that.props.challenges.map(function(challenge, i) {
       return (
         <InfoWindow
           marker={that.state.activeMarker}
@@ -86,7 +66,7 @@ export class MapContainer extends Component {
   }
 
   renderList = (props, that) => {
-    return challenges.map(function(challenge, i) {
+    return that.props.challenges.map(function(challenge, i) {
       return (
         <div className="list-container">
           <div className="list-title">

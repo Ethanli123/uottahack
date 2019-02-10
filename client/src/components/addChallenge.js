@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import '../style/addChallenge.css';
 import { Card, Form, Select, Input, Button } from 'antd';
-const { Option } = Select;
-import { Form, Input, Button } from 'antd';
 
 class AddChallengeForm extends Component {
     handleSubmit = (e) => {
@@ -21,48 +19,18 @@ class AddChallengeForm extends Component {
         const { getFieldDecorator } = this.props.form;
 
         return (
-          <Card className="form-card">
-              <Form className="form" onSubmit={this.handleSubmit}>
-                  <Form.Item
-                      label="City"
-                      labelCol={{ span: 5 }}
-                      wrapperCol={{ span: 12 }}
-                  >
-                      {getFieldDecorator('city', {
-                          rules: [{ required: true, message: 'Please input your city!' }],
-                      })(
-                          <Input />
-                      )}
-                  </Form.Item>
-
-                  <Form.Item
-                      label="Location"
-                      labelCol={{ span: 5 }}
-                      wrapperCol={{ span: 12 }}
-                  >
-                      {getFieldDecorator('location', {
-                          rules: [{ required: true, message: 'Please input your location!' }],
-                      })(
-                          <Input />
-                      )}
-                  </Form.Item>
-                  <Form.Item
-                      label="Description"
-                      labelCol={{ span: 5 }}
-                      wrapperCol={{ span: 12 }}
-                  >
-                      {getFieldDecorator('challengeName', {
-                          rules: [{ required: true, message: 'Please input your challenge description!' }],
-                      })(
-                          <Input />
-                      )}
-                  </Form.Item>
-
-                  <Form.Item>
-                  <Button type="primary" htmlType="submit">Add Challenge!</Button>
-                  </Form.Item>
-              </Form>
-            </Card>
+            <Form className="form" onSubmit={this.handleSubmit}>
+                <Form.Item
+                    label="City"
+                    labelCol={{ span: 5 }}
+                    wrapperCol={{ span: 12 }}
+                >
+                    {getFieldDecorator('city', {
+                        rules: [{ required: true, message: 'Please input your city!' }],
+                    })(
+                        <Input />
+                    )}
+                </Form.Item>
                 <Form.Item
                     label="Description"
                     labelCol={{ span: 5 }}
@@ -74,7 +42,6 @@ class AddChallengeForm extends Component {
                         <Input />
                     )}
                 </Form.Item>
-
                 <Form.Item
                     label="Difficulty"
                     labelCol={{ span: 5 }}

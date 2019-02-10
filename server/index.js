@@ -3,7 +3,6 @@ const api = require('./api');
 const app = express();
 const port = 3001;
 
-<<<<<<< HEAD
 const admin = require('firebase-admin');
 const functions = require('firebase-functions');
 

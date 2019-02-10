@@ -101,6 +101,28 @@ class App extends Component {
         location['second'] = y;
         let index = Math.floor((Math.random() * 999999) + 4);
 
+        let challenge = {
+            activity: challengeName,
+            city: city,
+            difficulty: difficulty,
+            location: location,
+            votes: 0,
+            index: index
+        };
+
+        dal.createChallenge(challenge).then((res) => {
+            this.initData();
+        })
+        .catch((err) => {
+            console.log(`ERROR: ${err}`);
+        });
+    }
+
+    toggle = () => {
+        this.setState({
+            disabled: !this.state.disabled,
+          });
+    };
 
   render() {
     console.log();
@@ -130,28 +152,6 @@ class App extends Component {
       </div>
     );
   }
-        let challenge = {
-            activity: challengeName,
-            city: city,
-            difficulty: difficulty,
-            location: location,
-            votes: 0,
-            index: index
-        };
-
-        dal.createChallenge(challenge).then((res) => {
-            this.initData();
-        })
-        .catch((err) => {
-            console.log(`ERROR: ${err}`);
-        });
-    }
-
-    toggle = () => {
-        this.setState({
-            disabled: !this.state.disabled,
-        });
-    }
 
     componentWillMount() {
         this.initData();
