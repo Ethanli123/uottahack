@@ -1,12 +1,44 @@
 @import '~antd/dist/antd.css';
 
 .profileCard {
-    margin: auto;
-    min-height: 200px;   
-    width: 600px;
+    position: relative !important;
+    margin-top: 20px !important;
+    min-height: 200px;
+    width: 1000px;
     margin-top: 25px;
     margin-bottom: 25px;
-    box-shadow: 5px 5px #C2CAD0;
+    box-shadow: 10px 10px 10px rgba(202, 202, 202, 0.7);
+    border-radius: 2%;
+    border: none;
+    z-index: 0;
+}
+
+#prof {
+    width: 600px;
+}
+
+.prof-title {
+    align-self: flex-start;
+    padding-left: 90px;
+    font-size: 40px;
+    padding-top: 30px;
+}
+
+.prof-hr {
+    align-self: flex-start;
+    width: 80%;
+    font-size: 40px;
+}
+
+.profile-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 200px !important;
+    z-index: 0;
+    background-color: #f0f1f1;
+    padding-top: 30px;
+    padding-bottom: 80px;
 }
 
 .disableMsg {
@@ -14,4 +46,3 @@
     display: inline-block;
     font-size: 18px;
 }
-

@@ -26,8 +26,6 @@ export class MapContainer extends Component {
 
   constructor(props) {
     super(props);
-
-    //this.renderMapMarkers = this.renderMapMarkers.bind(this);
   }
 
   state = {
@@ -92,18 +90,63 @@ export class MapContainer extends Component {
     });
   }
 
-
+  renderList = (props, that) => {
+    return challenges.map(function(challenge, i) {
+      return (
+        <div className="list-container">
+          <div className="list-title">
+            {challenge.activity}
+          </div>
+          <hr className="list-hr" />
+          <div>
+            <span className="list-span">
+              <div><strong> City </strong></div>
+              <div> {challenge.city}</div>
+            </span>
+          </div>
+          <div>
+            <span className="list-span">
+              <div><strong> Votes </strong></div>
+              <div> {challenge.votes}</div>
+            </span>
+          </div>
+          <div>
+            <span className="list-span">
+              <div><strong> Difficulty </strong></div>
+              <div> {challenge.difficulty} </div>
+            </span>
+          </div>
+          <hr className="list-hr" />
+        </div>
+      );
+    });
+  }
 
   render() {
     return (
-      <div className = "map-container">
-        <CurrentLocation centerAroundCurrentLocation google={this.props.google}>
-          <Marker
-            icon={"http://maps.google.com/mapfiles/ms/icons/blue-dot.png"}
-          />
-          {this.renderMapMarkers(this.props, this)}
-          {this.renderInfoWindows(this.props, this)}
-        </CurrentLocation>
+      <div className="explore-container">
+        <div className="explore-challenge-title">Explore Challenges</div>
+        <div className = "map-container">
+          <CurrentLocation centerAroundCurrentLocation google={this.props.google}>
+            <Marker
+              icon={"http://maps.google.com/mapfiles/ms/icons/blue-dot.png"}
+            />
+            <InfoWindow
+              marker={this.state.activeMarker}
+              visible={this.state.showingInfoWindow}
+              onClose={this.onClose}
+            >
+              <div>
+                <h4>Your location</h4>
+              </div>
+            </InfoWindow>
+            {this.renderMapMarkers(this.props, this)}
+            {this.renderInfoWindows(this.props, this)}
+          </CurrentLocation>
+        </div>
+        <div className="ec-list">
+          {this.renderList(this.props, this)}
+        </div>
       </div>
     );
   }

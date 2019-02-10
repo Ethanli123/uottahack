@@ -2,28 +2,27 @@ import React from 'react';
 import { Link } from 'react-router-dom'
 import { Menu } from 'antd';
 import '../style/App.css';
+import profile from '../images/santatrump.jpg';
+
 
 function NavBar(props) {
     return (
         <div className="nav">
-            <Menu
-            theme="dark"
-            mode="horizontal"
-            defaultSelectedKeys={['1']}
-            style={{ lineHeight: '64px' }}
-            >
-                <Menu.Item key="1">
-                    <Link className='link' to='/'>Explore Challenges</Link>
-                </Menu.Item>
-                <Menu.Item key="2">
-                    <Link className='link' to='/profile'>Profile</Link>
-                </Menu.Item>
-                <Menu.Item key="3">
-                    <Link className='link' to='/add-challenges'>Add Challenges</Link>
-                </Menu.Item>
-            </Menu>
+          <div className="nav-back" />
+          <Link className="explore-challenges" style={{ textDecoration: 'none' }} to='/'> Explore Challenges
+              <hr className="nav-hr-ec" />
+          </Link>
+
+          <div className="profile">
+            <Link className="profile" to ='./profile'>
+              <img className="nav-profile" src={profile}></img>
+            </Link>
+          </div>
+          <Link to='/add-challenges' className="add-challenges" style={{ textDecoration: 'none' }}> Add Challenges
+              <hr className="nav-hr-ac" />
+          </Link>
         </div>
-    );  
+    );
 }
 
 export default NavBar;

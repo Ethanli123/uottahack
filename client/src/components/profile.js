@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Card, Col, Row, Icon, Avatar, Switch, Table, Pagination } from 'antd';
+import '../style/App.css';
 import '../style/profile.css';
 import profile from '../images/santatrump.jpg';
 
@@ -39,27 +40,33 @@ class Profile extends Component {
             }
         ];
     }
-    
+
     render() {
         let msg = this.props.user.disabled ? "turn off location visibility" : "allow others to see your location";
         // anon default avatar: <Meta avatar={<Avatar size={128} icon="user" />} />
 
         return (
-            <div>
-                <Card className="profileCard" title={this.props.user.username}>
-                    <Meta avatar={<Avatar size={128} src={profile} />} 
+            <div className="profile-container">
+                <div className="prof-title"> {this.props.user.username} </div>
+                <hr className="prof-hr" />
+                <Card className="profileCard" id="prof">
+                    <Meta avatar={<Avatar size={128} src={profile} />}
                           title="About Me"
                           description={this.props.user.about} />
                     <br />
                     <Switch defaultChecked onChange={this.props.toggle} style={{"background-color": "#E7717D"}} />
                     <span className="disableMsg">{msg}</span>
                 </Card>
-            
-                <Card className="profileCard" title="City Scoreboard">
-                    <Table dataSource={this.props.user.points} columns={this.scoreboardColumn} pagination={false}/> 
+
+                <div className="prof-title"> Points Earned </div>
+                <hr className="prof-hr" />
+                <Card className="profileCard">
+                    <Table dataSource={this.props.user.points} columns={this.scoreboardColumn} pagination={false}/>
                 </Card>
 
-                <Card className="profileCard" title="Challenges Submitted">
+                <div className="prof-title"> Challenges Created </div>
+                <hr className="prof-hr" />
+                <Card className="profileCard">
                     <Table dataSource={this.props.user.challenges} columns={this.challengeColumn} pagination={false} />
                 </Card>
             </div>

@@ -15,8 +15,8 @@ class App extends Component {
       this.state = {
           disabled: false,
           username: "Tronald Dump",
-          about: `Hi, my name is Tronald Dump, I am the long lost brother of our 
-                  glorious leader Donald Trump. In my spare time I love building sand 
+          about: `Hi, my name is Tronald Dump, I am the long lost brother of our
+                  glorious leader Donald Trump. In my spare time I love building sand
                   walls at the beach and admiring my H U M O N G O U S hands.`,
           points: [
               {
@@ -66,30 +66,32 @@ class App extends Component {
       });
   }
 
-  
+
   render() {
+    console.log();
     return (
-      <div className="App">
-        <Header />
-        <NavBar />
-        <Switch>
-          <Route exact path='/' render={(props) => {
-              return (
-                  <Explore {...props} challenges={this.state.challenges} />
-              );
-          }} />
-          <Route exact path='/profile' render={(props) => {
-              return (
-                <Profile {...props} user={this.state} toggle={this.toggle} />
-              );
-          }} />
-          <Route exact path='/add-challenges' render={(props) => {
-              return (
-                  <AddChallenge {...props} processInfo={this.addChallenge} />
-              );
-          }} />
-        </Switch>
-        <Footer />
+      <div>
+          <Header />
+          <NavBar />
+            <Switch>
+              <Route exact path='/' render={(props) => {
+                  return (
+                      <Explore {...props} challenges={this.state.challenges} />
+                  );
+              }} />
+              <Route exact path='/profile' render={(props) => {
+                  return (
+                    <Profile {...props} user={this.state} toggle={this.toggle} />
+                  );
+              }} />
+              <Route exact path='/add-challenges' render={(props) => {
+                  return (
+                      <AddChallenge {...props} processInfo={this.addChallenge} />
+                  );
+              }} />
+            </Switch>
+          <Footer />
+          <div className="app" />
       </div>
     );
   }
