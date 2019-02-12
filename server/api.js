@@ -3,12 +3,7 @@ const firebase = require('firebase');
 
 // config object
 const config = {
-    apiKey: "AIzaSyAQqaZnVlWDsGJebAt-dcJBloLMa89kmVQ",
-    authDomain: "emerald-energy-154417.firebaseapp.com",
-    databaseURL: "https://emerald-energy-154417.firebaseio.com",
-    projectId: "emerald-energy-154417",
-    storageBucket: "emerald-energy-154417.appspot.com",
-    messagingSenderId: "437493352093"
+/ *** api keys and stuff would go here! **/
 };
 
 // initialize the config
