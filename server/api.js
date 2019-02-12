@@ -3,7 +3,7 @@ const firebase = require('firebase');
 
 // config object
 const config = {
-/ *** api keys and stuff would go here! **/
+/*** api keys and stuff would go here! ***/
 };
 
 // initialize the config
